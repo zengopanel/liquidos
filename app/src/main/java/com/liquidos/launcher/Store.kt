@@ -181,14 +181,14 @@ object Store {
         }
     }
 
-    fun setIconStyle(v: Int) { iconStyle = v; prefs?.edit()?.putInt("iconStyle", v)?.apply() }
-    fun setPerf(v: PerfProfile) { perf = v; prefs?.edit()?.putInt("perf", v.level)?.apply() }
-    fun setIconSize(v: Float) { iconSizeDp = v; prefs?.edit()?.putFloat("iconSize", v)?.apply() }
-    fun setCorner(v: Float) { cornerPct = v; prefs?.edit()?.putFloat("corner", v)?.apply() }
-    fun setGrid(v: Int) { gridColumns = v; prefs?.edit()?.putInt("grid", v)?.apply() }
-    fun setReduceMotion(v: Boolean) { reduceMotion = v; prefs?.edit()?.putBoolean("reduceMotion", v)?.apply() }
-    fun setShowLabels(v: Boolean) { showLabels = v; prefs?.edit()?.putBoolean("showLabels", v)?.apply() }
-    fun setGlassIntensity(v: Float) { glassIntensity = v; prefs?.edit()?.putFloat("glassIntensity", v)?.apply() }
+    fun updateIconStyle(v: Int) { iconStyle = v; prefs?.edit()?.putInt("iconStyle", v)?.apply() }
+    fun updatePerf(v: PerfProfile) { perf = v; prefs?.edit()?.putInt("perf", v.level)?.apply() }
+    fun updateIconSize(v: Float) { iconSizeDp = v; prefs?.edit()?.putFloat("iconSize", v)?.apply() }
+    fun updateCorner(v: Float) { cornerPct = v; prefs?.edit()?.putFloat("corner", v)?.apply() }
+    fun updateGrid(v: Int) { gridColumns = v; prefs?.edit()?.putInt("grid", v)?.apply() }
+    fun updateReduceMotion(v: Boolean) { reduceMotion = v; prefs?.edit()?.putBoolean("reduceMotion", v)?.apply() }
+    fun updateShowLabels(v: Boolean) { showLabels = v; prefs?.edit()?.putBoolean("showLabels", v)?.apply() }
+    fun updateGlassIntensity(v: Float) { glassIntensity = v; prefs?.edit()?.putFloat("glassIntensity", v)?.apply() }
 
     fun toggleDock(pkg: String) {
         val l = dock.toMutableList()

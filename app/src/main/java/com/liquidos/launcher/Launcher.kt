@@ -747,17 +747,17 @@ private fun SettingsOverlay(onClose: () -> Unit) {
                 SettingsTab.APPEARANCE -> Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Heading("شكل الأيقونات", 13)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Chip(Modifier.weight(1f), "زجاج سائل", Store.iconStyle == 0) { Store.setIconStyle(0) }
-                        Chip(Modifier.weight(1f), "كلاسيكي", Store.iconStyle == 1) { Store.setIconStyle(1) }
-                        Chip(Modifier.weight(1f), "دائري", Store.iconStyle == 2) { Store.setIconStyle(2) }
+                        Chip(Modifier.weight(1f), "زجاج سائل", Store.iconStyle == 0) { Store.updateIconStyle(0) }
+                        Chip(Modifier.weight(1f), "كلاسيكي", Store.iconStyle == 1) { Store.updateIconStyle(1) }
+                        Chip(Modifier.weight(1f), "دائري", Store.iconStyle == 2) { Store.updateIconStyle(2) }
                     }
                     Heading("حجم الأيقونات", 13)
-                    LabeledSlider((Store.iconSizeDp - 46f) / 30f) { Store.setIconSize(46f + it * 30f) }
+                    LabeledSlider((Store.iconSizeDp - 46f) / 30f) { Store.updateIconSize(46f + it * 30f) }
                     Heading("استدارة الزوايا", 13)
-                    LabeledSlider(Store.cornerPct / 0.5f) { Store.setCorner((it * 0.5f).coerceIn(0.05f, 0.5f)) }
+                    LabeledSlider(Store.cornerPct / 0.5f) { Store.updateCorner((it * 0.5f).coerceIn(0.05f, 0.5f)) }
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Chip(Modifier.weight(1f), "إظهار الأسماء", Store.showLabels) { Store.setShowLabels(true) }
-                        Chip(Modifier.weight(1f), "إخفاء الأسماء", !Store.showLabels) { Store.setShowLabels(false) }
+                        Chip(Modifier.weight(1f), "إظهار الأسماء", Store.showLabels) { Store.updateShowLabels(true) }
+                        Chip(Modifier.weight(1f), "إخفاء الأسماء", !Store.showLabels) { Store.updateShowLabels(false) }
                     }
                     Chip(Modifier.fillMaxWidth(), "🖼 تغيير الخلفية", false) {
                         try { ctx.startActivity(Intent.createChooser(Intent(Intent.ACTION_SET_WALLPAPER), "اختر الخلفية")) } catch (e: Exception) {}
@@ -767,8 +767,8 @@ private fun SettingsOverlay(onClose: () -> Unit) {
                 SettingsTab.ANIMATION -> Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Heading("تقليل الحركة (لإمكانية الوصول)", 13)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Chip(Modifier.weight(1f), "عادي", !Store.reduceMotion) { Store.setReduceMotion(false) }
-                        Chip(Modifier.weight(1f), "مخفَّف", Store.reduceMotion) { Store.setReduceMotion(true) }
+                        Chip(Modifier.weight(1f), "عادي", !Store.reduceMotion) { Store.updateReduceMotion(false) }
+                        Chip(Modifier.weight(1f), "مخفَّف", Store.reduceMotion) { Store.updateReduceMotion(true) }
                     }
                     BasicText(
                         "يعتمد إيقاع الحركة أيضاً على وضع الأداء في تبويب \"الأداء\".",
@@ -779,7 +779,7 @@ private fun SettingsOverlay(onClose: () -> Unit) {
                 SettingsTab.HOME -> Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Heading("عدد أعمدة الشبكة", 13)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        listOf(4, 5, 6).forEach { n -> Chip(Modifier.weight(1f), "$n", Store.gridColumns == n) { Store.setGrid(n) } }
+                        listOf(4, 5, 6).forEach { n -> Chip(Modifier.weight(1f), "$n", Store.gridColumns == n) { Store.updateGrid(n) } }
                     }
                     if (Store.hidden.isNotEmpty()) {
                         Heading("التطبيقات المخفية (${Store.hidden.size})", 13)
@@ -795,9 +795,9 @@ private fun SettingsOverlay(onClose: () -> Unit) {
                 SettingsTab.PERF -> Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Heading("وضع الأداء", 13)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Chip(Modifier.weight(1f), "أداء", Store.perf == PerfProfile.PERFORMANCE) { Store.setPerf(PerfProfile.PERFORMANCE) }
-                        Chip(Modifier.weight(1f), "متوازن", Store.perf == PerfProfile.BALANCED) { Store.setPerf(PerfProfile.BALANCED) }
-                        Chip(Modifier.weight(1f), "Ultra", Store.perf == PerfProfile.ULTRA) { Store.setPerf(PerfProfile.ULTRA) }
+                        Chip(Modifier.weight(1f), "أداء", Store.perf == PerfProfile.PERFORMANCE) { Store.updatePerf(PerfProfile.PERFORMANCE) }
+                        Chip(Modifier.weight(1f), "متوازن", Store.perf == PerfProfile.BALANCED) { Store.updatePerf(PerfProfile.BALANCED) }
+                        Chip(Modifier.weight(1f), "Ultra", Store.perf == PerfProfile.ULTRA) { Store.updatePerf(PerfProfile.ULTRA) }
                     }
                     BasicText(
                         "وضع \"أداء\" هو الموصى به لهاتفك للحفاظ على السلاسة. جرّب \"متوازن\" إن أردت مزيداً من التفاصيل البصرية.",
