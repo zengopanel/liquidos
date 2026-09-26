@@ -12,6 +12,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 /**
  * نظام "الزجاج السائل" بخمسة مستويات. كل مستوى له كثافة تعتيم وحدّة إضاءة حافة مختلفة،
